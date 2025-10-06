@@ -138,6 +138,7 @@ function displayProductDetails(product) {
     document.getElementById('productImg').src = product.image;
     document.getElementById('productPrice').textContent = product.price;
     document.getElementById('productCategory').textContent = product.category;
+    document.getElementById('productCondition').textContent = product.condition
     document.getElementById('sellerBadges').textContent = product.badges || '';
     document.getElementById('productCondition').textContent = product.condition;
     document.getElementById('productDescription').textContent = product.description;
@@ -341,18 +342,19 @@ function openChatWithSeller(sellerName) {
     chatModal.querySelector('.modal-close').addEventListener('click', closeModal);
     document.body.appendChild(chatModal);
     showModal(chatModal);
-}
 
-const sendBtn = document.addEventListener('click', sendMessage)
+    const sendBtn = document.addEventListener('click', sendMessage)
+}
 
 function sendMessage() {
     const chatInput = document.getElementById('chat-input');
-    chatInput.addEventListener('keypress', function(event) {
+    chatInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             event.preventDefault();
             sendMessage()
         }
     });
+
     const message = chatInput.value.trim();
     
     if (message) {
