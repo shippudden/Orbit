@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit - Service Details</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Box Icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Header section -->
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo" title="Orbit Pi Economy"></div>
+        </div>
+
+        <div class="search-bar">
+            <i class='bx bx-search-alt'></i>
+            <input type="text" class="search-input" placeholder="Search products...">
+        </div>
+
+        <div class="right-section">
+            <div class="pi-wallet">
+                <i class='bx bxs-wallet'></i>
+                <p>0.00 π</p>
+            </div>
+
+            <button class="sell-btn" id="sellBtn"><i class='bx bx-plus'></i> Sell</button>
+            <i class='bx bx-message-rounded'></i>
+            <img class="emily-profile" src="./Images/Emily Carter.png" alt="avatar" id="profileAvatar">
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+
+
+    <!-- Similar to product-details.html but task-focused -->
+    <div class="task-details-container">
+        <div class="left-section">
+            <!-- Header Section -->
+            <div class="task-header">
+                <h1>Need Logo for Coffee Shop</h1>
+                <div class="task-meta">
+                    <span class="budget">50-100 π</span>
+                    <span class="deadline">
+                        <i class='bx bx-alarm'></i> 
+                        5 days left
+                    </span>
+                    <span class="proposals">
+                        <i class='bx bx-group'></i> 
+                        8 proposals
+                    </span>
+                </div>
+            </div>
+
+            <!-- Task Description -->
+            <div class="task-description">
+                <h3>Description</h3>
+                <p>
+                    I am seeking a minimalist logo design for my new coffee shop that captures the essence of coffee culture. The logo should prominently feature coffee beans, ideally illustrated in a simple yet elegant style. Additionally, I’d like the typography to be modern and clean, conveying a sense of sophistication and approachability. The overall design should reflect the warm and inviting atmosphere of the shop while maintaining a contemporary aesthetic.
+                </p>
+            </div>
+
+            <!-- Skills Required -->
+            <div class="skills-section">
+                <h3>Skills Required</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Logo Design</span>
+                    <span class="skill-tag">Branding</span>
+                    <span class="skill-tag">Minimalist</span>
+                </div>
+            </div>
+
+            <!-- Client Information -->
+            <div class="client-info">
+                <h3>Task Poster</h3>
+                <div class="client-profile">
+                    <img src="./Images/Emma Rodriguez.png" alt="Coffee Shop Owner">
+                    <div class="client-details">
+                        <h4>Coffee Shop Owner</h4>
+                        <p><i class="bx bx-star"></i> 4.8 (12 reviews)</p>
+                        <p><i class="bx bxs-map"></i> New York, USA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-form-section">
+            <!-- Proposal Form -->
+            <div class="proposal-section">
+                <h3>Submit Proposal</h3>
+                <form class="proposal-form">
+                    <textarea placeholder="Describe your approach, timeline, and why you're the right person for this task..." rows="10" cols="50"></textarea>
+                    <div class="form-row">
+                        <div class="proposal-offer">
+                            <label>Your Offer (π)</label>
+                            <input type="number" placeholder="75" min="1">
+                        </div>
+                        <div class="proposal-time">
+                            <label>Estimated Delivery</label>
+                            <input type="text" placeholder="e.g., 3 days">
+                        </div>
+                    </div>
+                    <button type="submit" id="proposalBtn" class="btn-primary">Submit Proposal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div>© 2025 Orbit &nbsp;|&nbsp; Built for the Pi Hackathon</div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

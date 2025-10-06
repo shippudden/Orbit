@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit - Create Task</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Box Icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Header section -->
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo" title="Orbit Pi Economy"></div>
+        </div>
+
+        <div class="search-bar">
+            <i class='bx bx-search-alt'></i>
+            <input type="text" class="search-input" placeholder="Search products...">
+        </div>
+
+        <div class="right-section">
+            <div class="pi-wallet">
+                <i class='bx bxs-wallet'></i>
+                <p>0.00 π</p>
+            </div>
+
+            <button class="sell-btn" id="sellBtn"><i class='bx bx-plus'></i> Sell</button>
+            <i class='bx bx-message-rounded'></i>
+            <img class="emily-profile" src="./Images/Emily Carter.png" alt="avatar" id="profileAvatar">
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+    
+    
+    <main class="listing-container">
+        <h1>Create a New Task</h1>
+        <form id="taskForm" class="listing-form">
+            <div class="form-section">
+                <label>Task Title *</label>
+                <input type="text" name="taskTitle" placeholder="e.g., Need logo design for my business" required>
+            </div>
+        
+            <div class="form-section">
+                <label>Task Description *</label>
+                <textarea name="description" rows="6" placeholder="Describe what you need done..." required></textarea>
+            </div>
+        
+            <div class="form-row">
+                <div class="form-section">
+                    <label>Budget (π) *</label>
+                    <input type="number" name="budget" placeholder="50" required min="1">
+                </div>
+            
+                <div class="form-section">
+                    <label>Category *</label>
+                    <select name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="design">Design</option>
+                        <option value="writing">Writing</option>
+                        <option value="programming">Programming</option>
+                        <option value="tutoring">Tutoring</option>
+                        <option value="translation">Translation</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="video">Video Editing</option>
+                    </select>
+                </div>
+            </div>
+        
+            <div class="form-row">
+                <div class="form-section">
+                    <label>Deadline</label>
+                    <input type="text" name="deadline" placeholder="e.g., 3 days">
+                </div>
+            
+                <div class="form-section">
+                    <label>Skills Required</label>
+                    <input type="text" name="skills" placeholder="e.g., Graphic Design, Photoshop">
+                </div>
+            </div>
+        
+            <div class="cta-btns">
+                <button type="submit" class="create-task-btn">Create Task</button>
+                <button type="submit" class="cancel-btn">Cancel</button>
+            </div>
+        </form>
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

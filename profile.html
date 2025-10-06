@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Orbit</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Header section -->
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo" title="Community Market"></div>
+        </div>
+
+        <div class="search-bar">
+            <i class='bx bx-search-alt'></i>
+            <input type="text" class="search-input" placeholder="Search products...">
+        </div>
+
+        <div class="right-section">
+            <div class="pi-wallet">
+                <i class='bx bxs-wallet'></i>
+                <p>0.00 π</p>
+            </div>
+
+            <button class="sell-btn" id="sellBtn"><i class='bx bx-plus'></i> Sell</button>
+            <i class='bx bx-message-rounded'></i>
+            <img class="emily-profile" src="./Images/Emily Carter.png" alt="avatar" id="profileAvatar">
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+
+    <div class="profile-header">
+        <img src="./Images/Profile Picture (Emily Carter).png" alt="avatar">
+
+        <div class="profile-right">
+            <div class="profile-info">
+                <div class="profile-name">
+                    <h1>Emily Carter</h1>
+                    <i class='bx bxs-badge-check'></i>
+                </div>
+                <div class="profile-rating">
+                    <i class='bx bxs-star'></i>
+                    <p>4.5 (98 reviews)</p>
+                </div>
+                <div class="user-details">
+                    <div class="user-location">
+                        <i class='bx bxs-map'></i>
+                        <p>Barcelona, Spain</p>
+                    </div>
+                    <div class="member">
+                        <i class='bx bxs-calendar-alt'></i>
+                        <p>Memeber Since: January 2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pi-balance">
+                <h2>Pi Balance</h2>
+                <div class="pi-wallet">
+                    <i class='bx bxs-wallet'></i>
+                    <p>0.00 π</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Stats Cards -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class='bx bx-package'></i>
+                </div>
+                <div class="stat-content">
+                    <h3>0</h3>
+                    <p>Items Listed</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon sold">
+                    <i class='bx bx-check-circle'></i>
+                </div>
+                <div class="stat-content">
+                    <h3>0</h3>
+                    <p>Items Sold</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon bought">
+                    <i class='bx bx-shopping-bag'></i>
+                </div>
+                <div class="stat-content">
+                    <h3>0</h3>
+                    <p>Items Bought</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon feedback">
+                    <i class='bx bxs-star'></i>
+                </div>
+                <div class="stat-content">
+                    <h3>0%</h3>
+                    <p>Positive Feedback</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Tabs -->
+        <nav class="profile-tabs">
+            <button class="tab-btn active" data-tab="listings">
+                <i class='bx bx-grid-alt'></i> My Listings
+            </button>
+            <button class="tab-btn" data-tab="purchases">
+                <i class='bx bx-purchase-tag'></i> Purchases
+            </button>
+            <button class="tab-btn" data-tab="sales">
+                <i class='bx bx-credit-card'></i> Sales
+            </button>
+            <button class="tab-btn" data-tab="reviews">
+                <i class='bx bx-message-star'></i> Reviews
+            </button>
+        </nav>
+
+        <!-- Tab Content -->
+        <section class="tab-content active" id="listings-tab">
+            <div class="tab-header">
+                <h2>My Active Listings</h2>
+                <span class="items-count">0 items</span>
+            </div>
+            
+            <div class="user-products-grid">
+                <!-- Product cards will be inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Other tab contents would be here, initially hidden -->
+        <!-- Purchases Tab (404) -->
+        <section class="tab-content" id="purchases-tab">
+            <div class="error-404">
+                <i class='bx bx-purchase-tag-alt'></i>
+                <p>
+                    It seems you haven't bought anything yet! Get something you like, and it will show up here. Enjoy shopping!
+                </p>
+            </div>
+        </section>
+
+        <!-- Sales Tab (404) -->
+        <section class="tab-content" id="sales-tab">
+            <div class="error-404">
+                <i class='bx bx-credit-card'></i>
+                <p>
+                    You have not made any sales yet. After making your first sale it'll appear here
+                </p>
+            </div>
+        </section>
+
+        <!-- Reviews Tab (404) -->
+        <section class="tab-content" id="reviews-tab">
+            <div class="error-404">
+                <i class='bx bx-message-error'></i>
+                <p>No reviews to display yet.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div>© 2025 Orbit &nbsp;|&nbsp; Built for the Pi Hackathon</div>
+    </footer>
+    
+
+    <script src="./script.js"></script>
+    <script src="./profile.js"></script>
+</body>
+</html>

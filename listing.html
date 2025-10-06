@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell a Product - Orbit</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Snackbar -->
+    <div class="snackbar-container" id="snackbarContainer">
+        <div class="snackbar-msg" id="snackbarMsg"></div>
+        <i class='bx bx-x'></i>
+    </div>
+
+    <!-- Header section -->
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo" title="Community Market"></div>
+        </div>
+
+        <div class="search-bar">
+            <i class='bx bx-search-alt'></i>
+            <input type="text" class="search-input" placeholder="Search products...">
+        </div>
+
+        <div class="right-section">
+            <div class="pi-wallet">
+                <i class='bx bxs-wallet'></i>
+                <p>0.00 π</p>
+            </div>
+
+            <button class="sell-btn" id="sellBtn"><i class='bx bx-plus'></i> Sell</button>
+            <i class='bx bx-message-rounded'></i>
+            <img class="emily-profile" src="./Images/Emily Carter.png" alt="avatar" id="profileAvatar">
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+
+    <main class="listing-container">
+        <h1>List Your Product</h1>
+        <form id="listingForm" class="listing-form">
+            <!-- Product Name -->
+            <div class="form-section">
+                <label>Product Name *</label>
+                <input type="text" name="productName" placeholder="e.g., Apple MacBook Pro 2023" required>
+            </div>
+            <!-- Product Description -->
+            <div class="form-section">
+                <label>Description *</label>
+                <textarea name="description" rows="8" placeholder="Describe your item in detail" required></textarea>
+            </div>
+            
+            <div class="form-row">
+                <!-- Product price -->
+                <div class="form-section">
+                    <label>Price (π) *</label>
+                    <input type="number" name="price" placeholder="0.00" required min="0">
+                </div>
+                <!-- Product Category -->
+                <div class="form-section">
+                    <label>Category *</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Books">Books</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Vehicles">Vehicles</option>
+                        <option value="Tools">Tools</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <!-- Product Condition and Location -->
+                <div class="form-section">
+                    <label>Condition *</label>
+                    <select name="condition" required>
+                        <option value="">Select Condition</option>
+                        <option value="New">New</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Good">Like New</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Poor">Poor</option>
+                    </select>
+                </div>
+
+                <div class="form-section">
+                    <label>Location*</label>
+                    <input type="text" name="location" placeholder="e.g., San Francisco, CA" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label for="productImage">Product Image *</label>
+                <div class="image-upload">
+                    <input type="file" id="productImage" name="image" accept="image/*" required>
+                    <div class="image-placeholder" id="imagePlaceholder">
+                        <i class='bx bx-cloud-upload'></i>
+                        <span>Click to upload or drag and drop</span>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-listing-btn">Create Listing</button>
+            <button class="cancel-btn" id="cancelBtn">Cancel</button>
+        </form>
+    </main>
+    <footer class="footer">
+        <div>© 2025 Orbit &nbsp;|&nbsp; Built for the Pi Hackathon</div>
+    </footer>
+    <script src="listing.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

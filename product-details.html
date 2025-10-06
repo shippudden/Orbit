@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Community Market</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+</head>
+<body>
+    <!-- Header section -->
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo" title="Community Market"></div>
+        </div>
+
+        <div class="search-bar">
+            <i class='bx bx-search-alt'></i>
+            <input type="text" class="search-input" placeholder="Search products...">
+        </div>
+
+        <div class="right-section">
+            <div class="pi-wallet">
+                <i class='bx bxs-wallet'></i>
+                <p>0.00 π</p>
+            </div>
+
+            <button class="sell-btn" id="sellBtn"><i class='bx bx-plus'></i> Sell</button>
+            <i class='bx bx-message-rounded'></i>
+            <img class="emily-profile" src="./Images/Emily Carter.png" alt="avatar" id="profileAvatar">
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+
+    <!-- Modal -->
+     <div class="modal-container"></div>
+
+    <!-- Snackbar -->
+    <div class="snackbar-container" id="snackbarContainer">
+        <div class="snackbar-msg" id="snackbarMsg"></div>
+        <i class='bx bx-x'></i>
+    </div>
+
+    <main class="product-details-container">
+        <div class="image-container">
+            <img src="" alt="Apple MacBook image" id="productImg">
+        </div>
+
+        <div class="product-details">
+            <div class="product-header">
+                <h1 class="product-name" id="productName">--</h1>
+
+                <div class="icons">
+                    <i class='bx bx-heart'></i>
+                    <i class='bx bx-share-alt'></i>
+                </div>
+            </div>
+
+            <div class="price-category-condition">
+                <p class="price" id="productPrice">--</p>
+                
+                <div class="category-condition">
+                    <p class="product-category" id="productCategory">--</p>
+                    <p class="product-condition" id="productCondition">--</p>
+                </div>
+            </div>
+
+            <p class="description" id="productDescription">--</p>
+
+            <div class="social">
+                <div class="views">
+                    <i class='bx bx-show'></i>
+                    <p id="productViews">--</p>
+                </div>
+
+                <div class="day-posted">
+                    <i class='bx bxs-calendar-alt'></i>
+                    <p id="productPostedDate">--</p>
+                </div>
+
+                <div class="likes">
+                    <i class='bx bx-heart'></i>
+                    <p id="productLikes">--</p>
+                </div>
+            </div>
+
+            <div class="seller-info">
+                <h2>Seller's Information</h2>
+
+                <div class="profile">
+                    <img src="" alt="avatar" id="sellerAvatar">
+                    <div class="seller-details">
+                        <div class="name">
+                            <h3 class="seller-name" id="sellerName">--</h3>
+                            <i class='bx bxs-badge-check' id="sellerVerified"></i>
+                        </div>
+                        
+                        <div class="rating">
+                            <i class='bx bxs-star'></i>
+                            <p id="sellerRating">--</p>
+                        </div>
+                        
+                        <div class="location">
+                            <i class='bx bxs-map'></i>
+                            <p id="sellerLocation">--</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="buy-now-btn">Buy Now</button>
+                <button class="contact-btn">Contact Seller</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div>© 2025 Orbit &nbsp;|&nbsp; Built for the Pi Hackathon</div>
+    </footer>
+
+    <script src="product-details.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

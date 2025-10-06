@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Box Icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!-- Header section -->
+    <div class="header">
+        <div class="logo-container">
+            <div class="logo" title="Orbit Pi Economy"></div>
+        </div>
+
+        <div class="search-bar">
+            <i class='bx bx-search-alt'></i>
+            <input type="text" class="search-input" placeholder="Search products...">
+        </div>
+
+        <div class="right-section">
+            <div class="pi-wallet">
+                <i class='bx bxs-wallet'></i>
+                <p>0.00 π</p>
+            </div>
+
+            <button class="sell-btn" id="sellBtn"><i class='bx bx-plus'></i> Sell</button>
+            <i class='bx bx-message-rounded'></i>
+            <img class="emily-profile" src="./Images/Emily Carter.png" alt="avatar" id="profileAvatar">
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </div>
+    
+    <div class="hero-section">
+        <div class="hero-texts">
+            <img src="./Images/Orbit Logo.png" alt="Orbit Logo">
+            <p>
+                The complete Pi economy platform. Earn Pi through microjobs and services, then spend it on real products. Your skills and purchases, powered by Pi.
+            </p>
+        </div>
+
+        <div class="hero-btns">
+            <button class="create-task">
+                <i class='bx bx-plus'></i> 
+                Create Tasks
+            </button>
+            
+            <button class="offer-services">
+                <i class='bx bx-briefcase'></i> 
+                Offer Services
+            </button>
+        </div>
+    </div>
+
+    <div class="featured-products" id="featuredProducts">
+        <div class="container">
+            <i class='bx bx-star'></i>
+            <h2>Featured Products</h2>
+        </div>
+        <div class="products-grid">
+            <!-- Large product (left) -->
+            <div class="product product-large" data-product-id="1">
+                <img class="large" src="./Images/Apple MacBook.jpg" alt="Apple MacBook image">
+                <div class="content-overlay">
+                    <h1>Apple MacBook Air 2023 Model</h1>
+                    <p class="price">1,299 π</p>
+
+                    <div class="seller-info">
+                        <img src="./Images/Sarah Johnson.png" alt="avatar">
+                        <p>Sarah Johnson</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top right product -->
+             <div class="product product-small" data-product-id="2">
+                <img class="small" src="./Images/Sofa.jpg" alt="Sofa image">
+                <div class="content-overlay2">
+                    <h1>Serenity Luxe Compact Sofa</h1>
+                    <p class="price">375 π</p>
+
+                    <div class="seller-info">
+                        <img src="./Images/Mike Chen.png" alt="Avatar">
+                        <p class="mike">Mike Chen</p>
+                    </div>
+                </div>
+             </div>
+            <!-- Bottom right product -->
+             <div class="product product-small" data-product-id="3">
+                <img class="small" src="./Images/Camera.jpg" alt="Camera image">
+                <div class="content-overlay3">
+                    <h1>Canon EOS R10 Mirrorless Camera</h1>
+                    <p class="price">1,799 π</p>
+
+                    <div class="seller-info">
+                        <img src="./Images/Emma Rodriguez.png" alt="Avatar">
+                        <p>Emma Rodriguez</p>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+
+    <div class="category-container">
+        <div class="container">
+            <i class='bx bx-collection'></i>
+            <h2>Category</h2>
+        </div>
+        <div class="pills">
+            <div class="category-active">
+                <p>All</p>
+            </div>
+            <div class="category">
+                <p>Electronics</p>
+            </div>
+            <div class="category">
+                <p>Vehicles</p>
+            </div>
+            <div class="category">
+                <p>Furniture</p>
+            </div>
+            <div class="category">
+                <p>Gaming</p>
+            </div>
+            <div class="category">
+                <p>Books</p>
+            </div>
+            <div class="category">
+                <p>Sports</p>
+            </div>
+            <div class="category">
+                <p>Tools</p>
+            </div>
+            <div class="category">
+                <p>Services</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="all-products-container">
+        <div class="container">
+            <i class='bx bxs-widget'></i>
+            <h2>All Products</h2>
+        </div>
+
+        <div class="products" id="products">
+        <!-- Card 1 -->
+            <div class="product-card glass" data-product-id="4">
+                <div class="card-header">
+                    <span class="condition">New</span>
+                    <span class="favourite"><i class='bx bx-heart'></i></span>
+                </div>
+                <img class="card-image" src="./Images/MacBook Pro.jpg" alt="Apple laptop image">
+                <div class="card-body">
+                    <h1 class="card-title">MacBook Pro 2025 model</h1>
+                    <div class="price-category">
+                        <span class="price">1,499 π</span>
+                        <span class="category-label">Electronics</span>
+                        <span class="badges" id="sellerBadges">Trusted Seller</span>
+                    </div>
+                    <div class="seller-info">
+                        <img src="./Images/Liam Smith.png" alt="Avatar">
+                        <span>Liam Smith</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="location">
+                            <i class='bx bxs-map'></i>
+                            <span>San Francisco, CA</span>
+                        </div>
+                        <div class="right">
+                            <div class="view">
+                                <i class='bx bxs-show'></i>
+                                <span>1.2k</span>
+                            </div>
+                            <div class="time-posted">
+                                <i class='bx bxs-time-five'></i>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="product-card glass" data-product-id="5">
+                <div class="card-header">
+                    <span class="condition">Excellent</span>
+                    <span class="favourite"><i class='bx bx-heart'></i></span>
+                </div>
+                <img class="card-image" src="./Images/Simple Chair.jpg" alt="Furniture image">
+                <div class="card-body">
+                    <h1 class="card-title">Serene Haven Couch</h1>
+                    <div class="price-category">
+                        <span class="price">899 π</span>
+                        <span class="category-label">Furniture</span>
+                        <span class="badges" id="sellerBadges">Top rated</span>
+                    </div>
+                    <div class="seller-info">
+                        <img src="./Images/Emma Johnson.png" alt="Avatar">
+                        <span>Emma Johnson</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="location">
+                            <i class='bx bxs-map'></i>
+                            <span>New York, USA</span>
+                        </div>
+                        <div class="right">
+                            <div class="view">
+                                <i class='bx bxs-show'></i>
+                                <span>2,500</span>
+                            </div>
+                            <div class="time-posted">
+                                <i class='bx bxs-time-five'></i>
+                                <span>5d ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="product-card glass" data-product-id="6">
+                <div class="card-header">
+                    <span class="condition">Good</span>
+                    <span class="favourite"><i class='bx bx-heart'></i></span>
+                </div>
+                <img class="card-image" src="./Images/XBox Controller.jpg" alt="Apple laptop image">
+                <div class="card-body">
+                    <h1 class="card-title">Black Wireless XBox Controller</h1>
+                    <div class="price-category">
+                        <span class="price">256 π</span>
+                        <span class="category-label">Gaming</span>
+                        <span class="badges" id="sellerBadges">Trusted Seller</span>
+                    </div>
+                    <div class="seller-info">
+                        <img src="./Images/Liam Thompson.png" alt="Avatar">
+                        <span>Liam Thompson</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="location">
+                            <i class='bx bxs-map'></i>
+                            <span>Tokyo, Japan</span>
+                        </div>
+                        <div class="right">
+                            <div class="view">
+                                <i class='bx bxs-show'></i>
+                                <span>1,250</span>
+                            </div>
+                            <div class="time-posted">
+                                <i class='bx bxs-time-five'></i>
+                                <span>3d ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div>© 2025 Orbit &nbsp;|&nbsp; Built for the Pi Hackathon</div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
