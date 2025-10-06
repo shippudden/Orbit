@@ -1,3 +1,5 @@
+// Pi, Pi Network and the Pi logo are trademarks of the Pi Community Company.
+
 document.addEventListener('DOMContentLoaded', () => {
     const clickableElements = document.querySelectorAll('[data-product-id]');
 

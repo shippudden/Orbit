@@ -2,6 +2,8 @@
 
 A dual-purpose platform for the Pi Network where users can earn Pi through micro-tasks and spend it on goods/services in a peer-to-peer marketplace.
 
+[![PiOS](https://img.shields.io/badge/Pi-Open%20Source-%23f0b90b)](https://github.com/pi-apps/PiOS)
+
 ## 🌟 Overview
 
 Orbit combines two powerful concepts into one unified platform:
@@ -133,9 +135,8 @@ This creates a **circular Pi economy** where users can earn Pi and immediately s
 
 Contributions are welcome! Please fork the repo and submit a pull request with your changes. For major changes, please open an issue first to discuss what you would like to change.
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## License
+This project is licensed under the Pi Open Source (PiOS) License. See the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
@@ -147,3 +148,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Built with ❤️ for the Pi Network community**
 
 *Making Pi useful, one transaction at a time.*
+
+*Pi, Pi Network and the Pi logo are trademarks of the Pi Community Company.*
