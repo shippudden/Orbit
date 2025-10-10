@@ -1,86 +1,46 @@
-// Load and initialize the Pi SDK
-Pi.init({ 
-    version: "2.0", 
-    sandbox: true, // Change to false for production
-    permissions: ["payments", "username", "wallet_address"] 
-});
+// Initialize Pi SDK
+Pi.init({ version: "2.0" });
 
-async function payWithPi(amount, memo, metadata = {}) {
-    try {
-        // Authenticate user
-        const scopes = ["payments", "username", "wallet_address"];
-        const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
-        
-        if (!auth) {
-            throw new Error("User canceled authentication");
-        }
+// Define app permissions (what the app can do)
+const scopes = ["payments"];
 
-        // Create payment
-        const payment = await Pi.createPayment({
-            amount: parseFloat(amount),
-            memo: memo,
-            metadata: {
-                ...metadata,
-                timestamp: new Date().toISOString(),
-                type: metadata.type || 'product_purchase'
-            },
-        });
-
-        // Handle the payment
-        const result = await handlePayment(payment);
-        
-        if (result.status === 'completed') {
-            showPaymentSuccessModal(result.paymentId, metadata.type);
-            return true;
-        } else {
-            throw new Error("Payment incomplete");
-        }
-    } catch (error) {
-        console.error("Payment error:", error);
-        showSnackbar("Payment failed: " + error.message);
-        return false;
-    }
-}
-
-async function handlePayment(payment) {
-    try {
-        // Complete the payment
-        const completedPayment = await payment.complete();
-        
-        // Save transaction details to your system
-        const transactionDetails = {
-            paymentId: completedPayment.identifier,
-            amount: completedPayment.amount,
-            user: completedPayment.user.username,
-            timestamp: new Date().toISOString(),
-            status: 'completed'
-        };
-
-        // You might want to save this to localStorage or your backend
-        saveTransaction(transactionDetails);
-        
-        return {
-            status: 'completed',
-            paymentId: completedPayment.identifier
-        };
-    } catch (error) {
-        console.error("Error completing payment:", error);
-        return {
-            status: 'failed',
-            error: error.message
-        };
-    }
-}
-
-function saveTransaction(transaction) {
-    const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
-    transactions.push(transaction);
-    localStorage.setItem('transactions', JSON.stringify(transactions));
-}
-
-// Handle incomplete payments
+// Handle incomplete payments (required by Pi SDK)
 function onIncompletePaymentFound(payment) {
-    console.log("Incomplete payment found:", payment);
-    // Implement your incomplete payment recovery logic here
-    return handlePayment(payment);
+  console.log("Incomplete payment found:", payment);
 }
+
+// Authenticate the user before any payment
+async function authenticateUser() {
+  try {
+    const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
+    console.log("User authenticated:", auth);
+    return auth;
+  } catch (error) {
+    console.error("Authentication failed:", error);
+  }
+}
+
+// Payment button logic
+document.getElementById("payButton").addEventListener("click", async () => {
+  // Step 1: Authenticate
+  const auth = await authenticateUser();
+  if (!auth) {
+    alert("Authentication failed. Please try again in Pi Browser.");
+    return;
+  }
+
+  // Step 2: Create a payment
+  try {
+    const payment = await Pi.createPayment({
+      amount: 0.001, // Small test payment
+      memo: "Test payment from Orbit",
+      metadata: { purpose: "test" },
+    });
+
+    console.log("Payment complete!", payment);
+    alert("Payment successful! 🎉");
+  } catch (err) {
+    console.error("Payment failed:", err);
+    alert("Payment failed. Check console for details.");
+  }
+});
