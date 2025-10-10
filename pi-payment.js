@@ -1,3 +1,12 @@
+function log(msg) {
+  const debug = document.getElementById("debug");
+  if (debug) {
+    debug.innerHTML += msg + "<br>";
+    debug.scrollTop = debug.scrollHeight;
+  }
+  console.log(msg);
+}
+
 // Initialize Pi SDK
 Pi.init({ version: "2.0" });
 
