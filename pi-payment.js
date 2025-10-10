@@ -88,7 +88,7 @@ document.getElementById("payButton").addEventListener("click", async () => {
         {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ paymentId }),
+            body: JSON.stringify({ paymentId, txid }),
         }
         );
         const data = await res.json();
