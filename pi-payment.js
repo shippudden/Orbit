@@ -14,9 +14,25 @@ Pi.init({ version: "2.0" });
 const scopes = ["payments"];
 
 // Handle incomplete payments (required)
-function onIncompletePaymentFound(payment) {
-  log("Incomplete payment found: " + JSON.stringify(payment));
+async function onIncompletePaymentFound(payment) {
+  log("Found incomplete payment: " + JSON.stringify(payment));
+
+  try {
+    const res = await fetch(
+      "https://934100cb-3b4d-404b-a0a5-a5a221c0e381-00-10y3qpo2vdvnf.spock.replit.dev/approve-payment",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ paymentId: payment.identifier }),
+      }
+    );
+    const data = await res.json();
+    log("Auto-approved incomplete payment: " + JSON.stringify(data));
+  } catch (err) {
+    log("Error auto-approving incomplete payment: " + err.message);
+  }
 }
+
 
 // Authenticate the user
 async function authenticateUser() {
