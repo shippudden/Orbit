@@ -48,7 +48,7 @@ document.getElementById("payButton").addEventListener("click", async () => {
 
     const callbacks = {
       onReadyForServerApproval: (paymentId) =>
-        fetch("https://934100cb-3b4d-404b-a0a5-a5a221c0e381-00-10y3qpo2vdvnf.spock.replit.dev/", {
+        fetch("https://934100cb-3b4d-404b-a0a5-a5a221c0e381-00-10y3qpo2vdvnf.spock.replit.dev:3000/", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ paymentId }),
