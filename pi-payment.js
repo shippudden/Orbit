@@ -4,28 +4,28 @@ function log(msg) {
     debug.innerHTML += msg + "<br>";
     debug.scrollTop = debug.scrollHeight;
   }
-  console.log(msg);
+  console.log(msg); // keep console output too
 }
 
 // Initialize Pi SDK
 Pi.init({ version: "2.0" });
 
-// Define app permissions (what the app can do)
+// Define app permissions
 const scopes = ["payments"];
 
-// Handle incomplete payments (required by Pi SDK)
+// Handle incomplete payments (required)
 function onIncompletePaymentFound(payment) {
-  console.log("Incomplete payment found:", payment);
+  log("Incomplete payment found: " + JSON.stringify(payment));
 }
 
-// Authenticate the user before any payment
+// Authenticate the user
 async function authenticateUser() {
   try {
     const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
-    console.log("User authenticated:", auth);
+    log("User authenticated: " + JSON.stringify(auth));
     return auth;
   } catch (error) {
-    console.error("Authentication failed:", error);
+    log("Authentication failed: " + error.message);
   }
 }
 
@@ -38,18 +38,29 @@ document.getElementById("payButton").addEventListener("click", async () => {
     return;
   }
 
-  // Step 2: Create a payment
+  // Step 2: Create a payment with callbacks
   try {
-    const payment = await Pi.createPayment({
-      amount: 0.001, // Small test payment
+    const paymentData = {
+      amount: 0.001,
       memo: "Test payment from Orbit",
       metadata: { purpose: "test" },
-    });
+    };
 
-    console.log("Payment complete!", payment);
+    const callbacks = {
+      onReadyForServerApproval: (paymentId) =>
+        log("Ready for server approval: " + paymentId),
+      onReadyForServerCompletion: (paymentId, txid) =>
+        log("Ready for server completion: " + paymentId + " | TxID: " + txid),
+      onCancel: (paymentId) => log("Payment cancelled: " + paymentId),
+      onError: (error, payment) =>
+        log("Payment error: " + error.message + " | " + JSON.stringify(payment)),
+    };
+
+    const payment = await Pi.createPayment(paymentData, callbacks);
+    log("Payment complete: " + JSON.stringify(payment));
     alert("Payment successful! 🎉");
   } catch (err) {
-    console.error("Payment failed:", err);
-    alert("Payment failed. Check console for details.");
+    log("Payment failed: " + err.message);
+    alert("Payment failed. Check console or log box for details.");
   }
 });
