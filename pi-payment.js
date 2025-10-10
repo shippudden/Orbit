@@ -80,8 +80,25 @@ document.getElementById("payButton").addEventListener("click", async () => {
         }
       },
 
-      onReadyForServerCompletion: (paymentId, txid) =>
-        log("Ready for server completion: " + paymentId + " | TxID: " + txid),
+      onReadyForServerCompletion: async (paymentId, txid) => {
+        log(`Ready for server completion: ${paymentId} | TxID: ${txid}`);
+        try {
+            const res = await fetch(
+            "https://934100cb-3b4d-404b-a0a5-a5a221c0e381-00-10y3qpo2vdvnf.spock.replit.dev/complete-payment",
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ paymentId }),
+        }
+        );
+        const data = await res.json();
+        log("Server completion response: " + JSON.stringify(data));
+    } catch (err) {
+        log("Error completing payment: " + err.message);
+    }
+},
+
+
       onCancel: (paymentId) => log("Payment cancelled: " + paymentId),
       onError: (error, payment) =>
         log("Payment error: " + error.message + " | " + JSON.stringify(payment)),
