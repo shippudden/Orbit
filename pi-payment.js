@@ -48,7 +48,15 @@ document.getElementById("payButton").addEventListener("click", async () => {
 
     const callbacks = {
       onReadyForServerApproval: (paymentId) =>
-        log("Ready for server approval: " + paymentId),
+        fetch("https://934100cb-3b4d-404b-a0a5-a5a221c0e381-00-10y3qpo2vdvnf.spock.replit.dev/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ paymentId }),
+        })
+        .then(res => res.json())
+        .then(data => log("Server approval response: " + JSON.stringify(data)))
+        .catch(err => log("Server error: " + err.message)),
+
       onReadyForServerCompletion: (paymentId, txid) =>
         log("Ready for server completion: " + paymentId + " | TxID: " + txid),
       onCancel: (paymentId) => log("Payment cancelled: " + paymentId),
