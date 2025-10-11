@@ -8,7 +8,7 @@ function log(msg) {
 }
 
 // Initialize Pi SDK
-Pi.init({ version: "2.0" });
+Pi.init({ version: "2.0", sandbox: true });
 
 // Define app permissions
 const scopes = ["payments"];
