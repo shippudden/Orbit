@@ -2990,3 +2990,30 @@ li i {
     color: #10B981;
     margin-bottom: 0.5rem;
 }
+
+.terms-container, .policy-container {
+    width: 50%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(12px);
+    text-align: center;
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.2rem;
+}
+
+.paragraph {
+    font-weight: 600;
+}
+
+.terms-container p, .policy-container p {
+    color: var(--color-text-light);
+    font-size: 1.2rem;
+}
+.terms-container h1, .policy-container h1 {
+    color: var(--color-primary);
+}
