@@ -341,7 +341,7 @@ body::-webkit-scrollbar-track {
     gap: 2rem;
 }
 
-.sell-btn {
+.sell-btn, .login-btn {
     padding: 1rem 2rem;
     background: var(--color-primary);
     color: #fff;
