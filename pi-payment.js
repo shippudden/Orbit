@@ -1,115 +1,117 @@
-function log(msg) {
-  const debug = document.getElementById("debug");
-  if (debug) {
-    debug.innerHTML += msg + "<br>";
-    debug.scrollTop = debug.scrollHeight;
-  }
-  console.log(msg);
-}
+// ==========================
+// 🪙 ORBIT PI PAYMENT SYSTEM
+// ==========================
 
-// ✅ Initialize Pi SDK
 Pi.init({ version: "2.0" });
 
-// ✅ App permissions
-const scopes = ["payments"];
+const serverBaseUrl = "https://85f7d394-11f9-440d-9ee9-f45b757a9322-00-31t8rw2v9f0th.worf.replit.dev";
+const debugDiv = document.getElementById("debug");
 
-// ✅ Handle incomplete payments (if any exist)
-async function onIncompletePaymentFound(payment) {
+function log(message) {
+  console.log(message);
+  if (debugDiv) debugDiv.textContent += `\n${message}`;
+}
+
+// Incomplete payment handler
+function onIncompletePaymentFound(payment) {
   log("Found incomplete payment: " + JSON.stringify(payment));
+  fetch(`${serverBaseUrl}/complete-payment`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payment),
+  });
+}
 
-  if (["approved", "completed", "cancelled"].includes(payment.status)) {
-    log("Skipping — payment already resolved.");
-    return;
-  }
-
+// 🔐 LOGIN (User Authentication)
+async function loginWithPi() {
   try {
-    const res = await fetch(
-      "https://85f7d394-11f9-440d-9ee9-f45b757a9322-00-31t8rw2v9f0th.worf.replit.dev/approve-payment",
+    const scopes = ["username", "payments", "wallet_address"];
+    const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
+    const user = auth.user;
+    localStorage.setItem("piUser", JSON.stringify(user));
+
+    log(`✅ Logged in as ${user.username}`);
+    alert(`Welcome ${user.username}!`);
+
+    const loginBtn = document.getElementById("login");
+    if (loginBtn) {
+      loginBtn.title = `@${user.username}`;
+      loginBtn.style.border = "2px solid #6c5ce7";
+    }
+  } catch (error) {
+    log("❌ Login failed: " + error.message);
+  }
+}
+
+// 💸 USER TO APP PAYMENT
+async function payWithPi(amount = 0.001, memo = "Orbit Marketplace Test Payment") {
+  try {
+    const payment = await Pi.createPayment(
+      { amount, memo, metadata: { purpose: "product-purchase" } },
       {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ paymentId: payment.identifier }),
+        onReadyForServerApproval: (paymentId) => {
+          log("Approving payment: " + paymentId);
+          fetch(`${serverBaseUrl}/approve-payment`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ paymentId }),
+          });
+        },
+        onReadyForServerCompletion: (paymentId, txid) => {
+          log("Completing payment: " + paymentId);
+          fetch(`${serverBaseUrl}/complete-payment`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ paymentId, txid }),
+          });
+        },
+        onCancel: (paymentId) => log("❌ Payment cancelled: " + paymentId),
+        onError: (error, payment) =>
+          log("⚠ Payment error: " + error + " for " + JSON.stringify(payment)),
       }
     );
-    const data = await res.json();
-    log("Auto-approved incomplete payment: " + JSON.stringify(data));
-  } catch (err) {
-    log("Error auto-approving incomplete payment: " + err.message);
-  }
-}
 
-// ✅ Authenticate user
-async function authenticateUser() {
-  try {
-    const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
-    log("User authenticated: " + JSON.stringify(auth));
-    return auth;
+    log("Payment created: " + JSON.stringify(payment));
+    alert("✅ Payment successful!");
   } catch (error) {
-    log("Authentication failed: " + error.message);
+    log("❌ Payment failed: " + error.message);
   }
 }
 
-// ✅ Handle Payment Button Click
-document.getElementById("payBtn").addEventListener("click", async () => {
-  const auth = await authenticateUser();
-  if (!auth) {
-    alert("Authentication failed. Please try again in Pi Browser.");
-    return;
-  }
+// 🎁 APP TO USER PAYMENT
+async function sendReward(amount = 0.001, memo = "Thanks for using Orbit!") {
+  const user = JSON.parse(localStorage.getItem("piUser"));
+  if (!user) return alert("Please log in first!");
 
   try {
-    const paymentData = {
-      amount: 0.001, // 💰 Test amount
-      memo: "Test payment from Orbit",
-      metadata: { purpose: "test" },
-    };
+    const res = await fetch(`${serverBaseUrl}/send-pi`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: user.username, amount, memo }),
+    });
 
-    const callbacks = {
-      onReadyForServerApproval: async (paymentId) => {
-        log("Ready for server approval: " + paymentId);
-        try {
-          const res = await fetch(
-            "https://85f7d394-11f9-440d-9ee9-f45b757a9322-00-31t8rw2v9f0th.worf.replit.dev/approve-payment",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ paymentId }),
-            }
-          );
-          const data = await res.json();
-          log("Server approval response: " + JSON.stringify(data));
-        } catch (err) {
-          log("Error approving: " + err.message);
-        }
-      },
-
-      onReadyForServerCompletion: async (paymentId, txid) => {
-        log(`Ready for completion: ${paymentId} | TxID: ${txid}`);
-        try {
-          const res = await fetch(
-            "https://85f7d394-11f9-440d-9ee9-f45b757a9322-00-31t8rw2v9f0th.worf.replit.dev/complete-payment",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ paymentId, txid }),
-            }
-          );
-          const data = await res.json();
-          log("Server completion response: " + JSON.stringify(data));
-        } catch (err) {
-          log("Error completing: " + err.message);
-        }
-      },
-
-      onCancel: (paymentId) => log("Payment cancelled: " + paymentId),
-      onError: (error, payment) => log("Payment error: " + error.message),
-    };
-
-    const payment = await Pi.createPayment(paymentData, callbacks);
-    log("Payment finished: " + JSON.stringify(payment));
-    alert("✅ Payment processed successfully!");
+    const data = await res.json();
+    if (data.success) {
+      log("🎁 Reward sent successfully!");
+      alert("🎉 Reward sent successfully!");
+    } else {
+      log("Reward failed: " + data.error);
+      alert("⚠ Reward failed: " + data.error);
+    }
   } catch (err) {
-    log("Payment failed: " + err.message);
-    alert("Payment failed. Check console or debug log.");
+    log("Error sending reward: " + err.message);
   }
+}
+
+// ==========================
+// EVENT LISTENERS
+// ==========================
+document.addEventListener("DOMContentLoaded", () => {
+  const loginBtn = document.getElementById("login");
+  const payBtn = document.getElementById("payBtn");
+  const claimBtn = document.getElementById("claimPi");
+
+  if (loginBtn) loginBtn.addEventListener("click", loginWithPi);
+  if (payBtn) payBtn.addEventListener("click", () => payWithPi(0.001, "Product Test Payment"));
+  if (claimBtn) claimBtn.addEventListener("click", sendReward);
 });
