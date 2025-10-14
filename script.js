@@ -690,7 +690,7 @@ function setupMobileMenu() {
             
             <!-- User Profile Section -->
             <div class="mobile-user-profile">
-                <img src="./Images/Emily Carter.png" id="login" alt="Emily Carter" class="mobile-user-avatar">
+                <img src="./Images/Emily Carter.png" id="login" alt="Emily Carter" id="profileAvatar" class="mobile-user-avatar">
                 <div class="mobile-user-info">
                     <h3>Emily Carter</h3>
                     <p>Barcelona, Spain</p>

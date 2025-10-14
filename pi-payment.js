@@ -18,7 +18,10 @@ function onIncompletePaymentFound(payment) {
   fetch(`${serverBaseUrl}/complete-payment`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payment),
+    body: JSON.stringify({
+      paymentId: payment.identifier,
+      txid: payment.transaction_id
+    }),
   });
 }
 
@@ -46,6 +49,10 @@ async function loginWithPi() {
 // 💸 USER TO APP PAYMENT
 async function payWithPi(amount = 0.001, memo = "Orbit Marketplace Test Payment") {
   try {
+    // AUTHENTICATE FIRST with payments scope
+    const scopes = ["username", "payments", "wallet_address"]
+    const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
+
     const payment = await Pi.createPayment(
       { amount, memo, metadata: { purpose: "product-purchase" } },
       {
