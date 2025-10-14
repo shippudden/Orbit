@@ -208,6 +208,7 @@ body::-webkit-scrollbar-track {
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
+    cursor: pointer;
     border: 3px solid var(--color-primary);
 }
 
