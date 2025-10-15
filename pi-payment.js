@@ -31,6 +31,7 @@ async function loginWithPi() {
     const scopes = ["username", "payments", "wallet_address"];
     const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
     const user = auth.user;
+    // Save both username and uid for server-side payments
     localStorage.setItem("piUser", JSON.stringify(user));
 
     log(`✅ Logged in as ${user.username}`);
@@ -47,7 +48,7 @@ async function loginWithPi() {
 }
 
 // 💸 USER TO APP PAYMENT
-async function payWithPi(amount = 0.001, memo = "Orbit Marketplace Test Payment") {
+async function payWithPi(amount = 0.001, memo = "Orbit Test Payment") {
   try {
     // AUTHENTICATE FIRST with payments scope
     const scopes = ["username", "payments", "wallet_address"]
@@ -94,7 +95,7 @@ async function sendReward(amount = 0.001, memo = "Thanks for using Orbit!") {
     const res = await fetch(`${serverBaseUrl}/send-pi`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username: user.username, amount, memo }),
+      body: JSON.stringify({ uid: user.uid, amount, memo }),
     });
 
     const data = await res.json();
