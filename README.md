@@ -47,7 +47,13 @@ Orbit is fully integrated with the *official Pi Network SDK, enabling **real blo
 | A2U transfer | Send Pi rewards from app to users directly |
 
 ### 🔐 Backend Setup
-- *Express.js + pi-backend*
+The backend is built with:
+- Node.js + Express
+- Pi SDK (pi-backend) for blockchain interactions
+- Hosted on Render
+
+**live backend URL:** `https://pi-payment-server.onrender.com/`
+
 - *Environment Variables:*
   ```bash
   PI_API_KEY=your_pi_api_key_here
@@ -122,7 +128,7 @@ Orbit is fully integrated with the *official Pi Network SDK, enabling **real blo
 
 ## Tech Stack
 - Frontend: HTML, CSS, Vanila JS (Pi SDK integrated)
-- Backend: Node.js + Express
+- Backend: Node.js + Express 
 - Database: JSON files (for demo purposes)
 - Payments: Pi Network SDK (U2A + A2U)
 - Hosting: Pi Browser compatible server

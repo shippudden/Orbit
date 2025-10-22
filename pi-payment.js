@@ -4,7 +4,7 @@
 
 Pi.init({ version: "2.0" });
 
-const serverBaseUrl = "https://85f7d394-11f9-440d-9ee9-f45b757a9322-00-31t8rw2v9f0th.worf.replit.dev";
+const serverBaseUrl = "https://pi-payment-server.onrender.com/";
 const debugDiv = document.getElementById("debug");
 
 function log(message) {
