@@ -3,6 +3,7 @@
 A dual-purpose platform for the Pi Network where users can earn Pi through micro-tasks and spend it on goods/services in a peer-to-peer marketplace.
 
 [![PiOS](https://img.shields.io/badge/Pi-Open%20Source-%23f0b90b)](https://github.com/pi-apps/PiOS)
+[![Powered by Pi SDK](https://img.shields.io/badge/Powered%20by-Pi%20SDK-blueviolet)](https://developers.minepi.com)
 
 ## 🌟 Overview
 
@@ -32,6 +33,32 @@ This creates a **circular Pi economy** where users can earn Pi and immediately s
 - **Spend Pi** → Buy products, hire others for tasks
 - **Repeat** → Continuous Pi circulation in the ecosystem
 
+## 💰 Pi SDK Integration
+
+Orbit is fully integrated with the *official Pi Network SDK, enabling **real blockchain payments* on both *Testnet* and *Mainnet*.
+
+### ✅ Implemented SDK Features
+| Function | Description |
+|-----------|-------------|
+| authenticate() | Secure Pi user login with Pi Browser |
+| createPayment() | Initiate U2A payments from users to app |
+| approvePayment() | Backend verification for payment integrity |
+| completePayment() | Confirm and record successful payments |
+| A2U transfer | Send Pi rewards from app to users directly |
+
+### 🔐 Backend Setup
+- *Express.js + pi-backend*
+- *Environment Variables:*
+  ```bash
+  PI_API_KEY=your_pi_api_key_here
+  PI_WALLET_SEED=your_pi_wallet_seed_here
+  PORT=5000
+
+## Routes Implemented
+- /approve-paymnet -> U2A approval
+- /complete-payment -> U2A completion
+- /send-pi -> A2U reward transfers
+
 ## 🎯 Target Audience
 
 - **Pi Network Pioneers** looking for real Pi utility
@@ -47,23 +74,16 @@ This creates a **circular Pi economy** where users can earn Pi and immediately s
 - Post your own task requests
 - Offer ongoing services
 - Proposal and ordering system
-- Delivery time tracking
-- Revision management
 
 ### 🛒 **Marketplace**
 - Product listings with images
 - Category filtering
 - Condition tracking (New, Like New, Good, etc.)
-- Shipping options
-- Quantity management
-- Wishlist functionality
 
 ### 👤 **User Profiles**
 - Unified profile showing tasks, services, and products
 - Badge system (Fast Responder, Top Designer, etc.)
 - Rating and review system
-- Pi balance tracking
-- Transaction history
 
 ### 💬 **Messaging System**
 - In-app chat for buyers and sellers
@@ -86,6 +106,13 @@ This creates a **circular Pi economy** where users can earn Pi and immediately s
   --color-background: #F3F4F6;  
   --color-card: #FFFFFF;   
 
+## UI Highlights
+- Responsive for mobile-first users
+- Clean card-based layouts
+- Glassmorphism effects for modern look
+- Intuitive navigation and user flows
+- Optimzed for Pi Browser dispay and mobile-first layouts
+
 ### Components
 - Responsive design for all screen sizes
 - Consistent card layouts
@@ -94,42 +121,42 @@ This creates a **circular Pi economy** where users can earn Pi and immediately s
 
 
 ## Tech Stack
-- Frontend: [Your framework]
-- Backend: No backend yet, all logic handled client-side
-- Database: No database yet, all data is ephemeral
-- Pi SDK: For authentication and payments (integrated but mocked for demo)
+- Frontend: HTML, CSS, Vanila JS (Pi SDK integrated)
+- Backend: Node.js + Express
+- Database: JSON files (for demo purposes)
+- Payments: Pi Network SDK (U2A + A2U)
+- Hosting: Pi Browser compatible server
 
-## Hackathon Status
-- ✅ Core functionality built
-- 🟡 Pi Auth (mock implementation for demo)
-- ✅ Marketplace & micro-job flows
-- ✅ UI/UX complete
+## Hackathon Submission Status
+- Core functionality built
+- Pi Auth working via Pi SDK
+- U2A Payments: working and tested
+- A2U Transfers: functional and confirmed
+- Mainnet Checklist: 9/10 completed (A2U count in progress)
+
+## Note: Orbit is fully functional on Testnet and has completed 9/10 Mainnet requirements. A2U transaction confirmations are currently ongoing to finalize full Mainnet readiness. Despite this, all SDK flows (Login, U2A, A2U) have been successfully implemented and tested.
 
 ## Demo Video
-[Watch the demo video here]()
+[Watch the demo video here](https://youtu.be/MTEaL_z6Hjk?si=tw2yjs-qyZID8wsX)
 
 ## 🔮 Roadmap
 
 ### Phase 1: Core Platform ✅
-- [x] Task posting and browsing
-- [x] Service offerings
-- [x] Product marketplace
-- [x] User profiles and messaging
-- [x] Basic Pi integration
+	•	Microtask system (PiTask)
+	•	Marketplace listings (PiMart)
+	•	Pi SDK integration (U2A + A2U)
+	•	Responsive UI design
 
-### Phase 2: Advanced Features 🚧
-- [ ] Real Pi Network SDK integration
-- [ ] Escrow smart contracts
-- [ ] Advanced search and filtering
-- [ ] Mobile app (React Native)
-- [ ] Multi-language support
+## Phase 2: Ecosystem Expansion 🚧
+	•	Escrow-based smart contracts
+	•	Advanced search and filters
+	•	Multi-language support
+	•	Notifications and chat system
 
-### Phase 3: Ecosystem Growth 🔮
-- [ ] Business accounts
-- [ ] API for third-party integrations
-- [ ] Advanced analytics
-- [ ] Subscription services
-- [ ] Group buying features
+## Phase 3: Ecosystem Growth 🔮
+	•	Business accounts
+	•	Community task pools
+	•	Third-party API integrations
 
 ## 🤝 Contributing
 
@@ -141,7 +168,9 @@ This project is licensed under the Pi Open Source (PiOS) License. See the [LICEN
 ## 🙏 Acknowledgments
 
 - Pi Network for inspiring the project
-- Open-source libraries
+- Open-source Community for inspiration and tools
+- Pi SDK Library (pi-backend) - for seemless bloackchain integration
+- Replit - for hosting the live backend
 
 ---
 
