@@ -121,5 +121,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (loginBtn) loginBtn.addEventListener("click", loginWithPi);
   if (payBtn) payBtn.addEventListener("click", () => payWithPi(0.001, "Product Test Payment"));
-  if (claimBtn) claimBtn.addEventListener("click", sendReward(0.001, "Thanks for using Orbit!"));
+  if (claimBtn) claimBtn.addEventListener("click", () => sendReward(0.001, "Thanks for using Orbit!"));
 });
