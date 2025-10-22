@@ -52,7 +52,7 @@ The backend is built with:
 - Pi SDK (pi-backend) for blockchain interactions
 - Hosted on Render
 
-**live backend URL:** `https://pi-payment-server.onrender.com/`
+[live backend URL](https://pi-payment-server.onrender.com/)
 
 - *Environment Variables:*
   ```bash
